@@ -13,7 +13,7 @@
 
             customSelect = $('<div/>', {
                 'class': 'select-custom ' + uniqueClass
-            }).appendTo(defaults.wrap);
+            });
             defaultValueOption = $('<span/>', {
                 text: defaults.defaultValue,
                 'class': 'default'
@@ -27,6 +27,8 @@
                     text: $(el).val()
                 }).appendTo(dropdown);
             });
+
+            customSelect.appendTo(defaults.wrap);
 
             customSelect.on('click', function () {
                 dropdown.stop(true, false).fadeToggle('fast');
@@ -47,7 +49,9 @@
 
         update: function () {
             var custom = '.' + this.attr('id'),
-                self= $(this);
+                self = $(this);
+
+            $(custom).addClass('update');
 
             $(custom).find('.dropdown span').remove();
 
@@ -62,6 +66,8 @@
                 $(custom).find('.default').html( $(this).html() );
                 self.trigger('change');
             });
+
+            $(custom).removeClass('update');
         }
     };
 

@@ -33,6 +33,9 @@ body{
     cursor: pointer;
     text-align: left;
 }
+.select-custom.update{
+    background: url("../images/select-bg-update.png") 0 0 no-repeat;
+}
 .select-custom .default{
     font-size: 17px;
     margin-left: 15px;
