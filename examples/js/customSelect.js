@@ -18,6 +18,9 @@
             customSelect = $('<div/>', {
                 'class': 'select-custom ' + uniqueClass
             });
+            $('<span/>', {
+                'class': 'cs-arrow'
+            }).appendTo(customSelect);
             defaultValueOption = $('<span/>', {
                 text: defaults.defaultValue,
                 'class': 'default'
@@ -34,8 +37,8 @@
 
                 if ( $(el).attr('data-icon') ) { // add icon if set path
                     $('<img>', {
-                        class: "cs-icon",
-                        src: $(el).attr('data-icon')
+                        "class": "cs-icon",
+                        "src": $(el).attr('data-icon')
                     }).prependTo(item);
                 }
 
@@ -86,8 +89,8 @@
 
                 if ( $(el).attr('data-icon') ) {
                     $('<img>', {
-                        class: "cs-icon",
-                        src: $(el).attr('data-icon')
+                        "class": "cs-icon",
+                        "src": $(el).attr('data-icon')
                     }).prependTo(item);
                 }
             });
