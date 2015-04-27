@@ -24,13 +24,16 @@
 
             this.find('option').each(function (i, el) {
                 $('<span/>', {
-                    text: $(el).val()
+                    text: $(el).html(),
+                    "data-val": $(el).val()
                 }).appendTo(dropdown);
             });
 
             customSelect.appendTo(defaults.wrap);
 
             customSelect.on('click', function () {
+                if ( $(this).hasClass('update') ) return false;
+
                 dropdown.stop(true, false).fadeToggle('fast');
             });
 
@@ -41,7 +44,7 @@
             });
 
             customSelect.find('span').not('.default').on('click', function () {
-                self.val( $(this).html() );
+                self.val( $(this).attr('data-val') );
                 defaultValueOption.html( $(this).html() );
                 self.trigger('change');
             });
@@ -52,21 +55,20 @@
                 self = $(this);
 
             $(custom).addClass('update');
-
             $(custom).find('.dropdown span').remove();
 
             this.find('option').each(function (i, el) {
                 $('<span/>', {
-                    text: $(el).val()
+                    text: $(el).html(),
+                    "data-val": $(el).val()
                 }).appendTo( $(custom).find('.dropdown') );
             });
 
             $(custom).find('span').not('.default').on('click', function () {
-                self.val( $(this).html() );
+                self.val( $(this).attr('data-val') );
                 $(custom).find('.default').html( $(this).html() );
                 self.trigger('change');
             });
-
             $(custom).removeClass('update');
         }
     };
