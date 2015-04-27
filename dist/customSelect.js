@@ -2,7 +2,10 @@
     var methods = {
 
         init: function(param) {
-            var defaults = $.extend({defaultValue: 'Выберите', wrap: $('body')}, param),
+            var defaults = $.extend({
+                    defaultValue: 'Choose',
+                    height: 'auto'
+                }, param),
                 self = $(this),
                 uniqueClass = this.attr('id'),
                 customSelect,
@@ -11,6 +14,7 @@
 
             this.css('display', 'none');
 
+            // template
             customSelect = $('<div/>', {
                 'class': 'select-custom ' + uniqueClass
             });
@@ -23,24 +27,42 @@
             }).appendTo(customSelect);
 
             this.find('option').each(function (i, el) {
-                $('<span/>', {
+                var item = $('<span/>', {
                     text: $(el).html(),
                     "data-val": $(el).val()
                 }).appendTo(dropdown);
+
+                if ( $(el).attr('data-icon') ) { // add icon if set path
+                    $('<img>', {
+                        class: "cs-icon",
+                        src: $(el).attr('data-icon')
+                    }).prependTo(item);
+                }
+
+                if ( defaults.height != 'auto' ) {      //set dropdown height
+                    dropdown.css({'height': defaults.height,
+                        'overflow-y': 'scroll'
+                    });
+                }
             });
 
-            customSelect.appendTo(defaults.wrap);
+            customSelect.insertAfter(this);
 
+            // open/close select
             customSelect.on('click', function () {
+                if ( $(this).hasClass('update') ) return false;
+
                 dropdown.stop(true, false).fadeToggle('fast');
             });
 
+            // close, if click not on the select
             $(document).on('click', function (event) {
                 if ( !($(event.target).hasClass('select-custom'))  && $(event.target).attr('class') != 'default' ) {
                     dropdown.fadeOut('fast');
                 }
             });
 
+            // change value and text, if click on the select item
             customSelect.find('span').not('.default').on('click', function () {
                 self.val( $(this).attr('data-val') );
                 defaultValueOption.html( $(this).html() );
@@ -48,26 +70,43 @@
             });
         },
 
-        update: function () {
+        update: function (height) {     // update select items, if there are change
             var custom = '.' + this.attr('id'),
-                self = $(this);
+                self = $(this),
+                dropdown = $(custom).find('.dropdown');
 
             $(custom).addClass('update');
             $(custom).find('.dropdown span').remove();
 
             this.find('option').each(function (i, el) {
-                $('<span/>', {
+                var item = $('<span/>', {
                     text: $(el).html(),
                     "data-val": $(el).val()
-                }).appendTo( $(custom).find('.dropdown') );
+                }).appendTo( dropdown );
+
+                if ( $(el).attr('data-icon') ) {
+                    $('<img>', {
+                        class: "cs-icon",
+                        src: $(el).attr('data-icon')
+                    }).prependTo(item);
+                }
             });
+
+            if ( height != undefined ) {
+                dropdown.css({'height': height,
+                    'overflow-y': 'scroll'
+                });
+            } else {
+                dropdown.css({'height': 'auto',
+                    'overflow': 'auto'
+                });
+            }
 
             $(custom).find('span').not('.default').on('click', function () {
                 self.val( $(this).attr('data-val') );
                 $(custom).find('.default').html( $(this).html() );
                 self.trigger('change');
             });
-
             $(custom).removeClass('update');
         }
     };
@@ -78,7 +117,7 @@
         } else if ( typeof method === 'object' || ! method ) {
             return methods.init.apply( this, arguments );
         } else {
-            $.error( 'Метод ' +  method + ' не существует в jQuery.customSelect' );
+            $.error( 'Method ' +  method + ' not exist in jQuery.customSelect' );
         }
     }
 })( jQuery );

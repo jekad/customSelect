@@ -23,7 +23,6 @@ body{
 .global-wrapper{
     width: 300px;
     margin: 100px auto 0;
-}
 .select-custom{
     width: 300px;
     height: 45px;
@@ -33,13 +32,16 @@ body{
     cursor: pointer;
     text-align: left;
 }
+.select-custom.update{
+    background: url("../images/select-bg-update.png") 0 0 no-repeat;
+}
 .select-custom .default{
     font-size: 17px;
     margin-left: 15px;
     line-height: 45px;
     color: #5f5f5f;
 }
-.select-custom .dropdown {
+.select-custom .dropdown{
     background-color: #eee;
     position: absolute;
     width: 292px;
@@ -50,7 +52,6 @@ body{
 }
 .select-custom .dropdown span{
     display: block;
-    height: 30px;
     padding-left: 15px;
     margin-left: 3px;
     font-size: 16px;
@@ -59,4 +60,8 @@ body{
 }
 .select-custom .dropdown span:hover{
     background-color: #25aeff;
+}
+.select-custom .cs-icon{
+    vertical-align: middle;
+    margin-right: 10px;
 }

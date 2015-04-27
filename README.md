@@ -14,13 +14,26 @@ script type="text/javascript" src="customSelect.js"
 
 add default select on page and initialize plugin
 
-    $('#default-select').customSelect( {
-        wrap: $('.select-wrap'),
-        defaultValue: 'Default val'
-    });
+**INITIALIZATION**
 
-wrap - block where is been located your custom select( default is body )
+    $('#default-select').customSelect();
+    
+**PARAMETERS**
+
+    $('#default-select').customSelect( {
+            defaultValue: 'Default val',
+            height: '100px'
+    });
 
 defaultValue - default value
 
-live example - http://insurance.rwi-group.com/
+height - dropdown height (add scroll if items height more then you set in parameter)
+
+**METHODS**
+
+    $('#default-select').customSelect( 'update');
+    
+you can add parameter *height* if height of dropdown is change
+
+    $('#default-select').customSelect( 'update', '250px');
+
