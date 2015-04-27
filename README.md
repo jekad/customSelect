@@ -33,7 +33,8 @@ height - dropdown height (add scroll if items height more then you set in parame
 
     $('#default-select').customSelect( 'update');
     
-you can add parameter *height* if height of dropdown is change
+if you need set dropdown height don't forget add parameter
 
-    $('#default-select').customSelect( 'update', '250px');
+    $('#default-select').customSelect( 'update', '100px');
+
 
