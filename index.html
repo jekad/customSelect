@@ -1,1 +1,181 @@
-site
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="It's a free light weight very simple jQuery plugin that allows you to create a custom select with images. Supports IE7+">
+
+    <title>Custom jquery select with images, free light weight simple</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic" rel="stylesheet" type="text/css">
+    <link href="css/desert.css" rel="stylesheet" type="text/css">
+    <link href="css/customSelect.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+
+
+</head>
+<body onload="prettyPrint()">
+
+<div id="github-banner">
+    <a href="https://github.com/jekad/customSelect">Fork me on GitHub</a>
+</div>
+
+<div class="header">
+    <div class="container">
+        <h1>Custom Select</h1>
+        <p>It's a free light weight very simple jQuery plugin that allows you to create a custom select with images. Supports IE7+</p>
+    </div>
+</div>
+<div class="description">
+    <div class="container">
+        <p>
+            This plugin use minimum css and very simple in customization.<br /> Also you can add images.
+        </p>
+    </div>
+</div>
+
+<div class="download">
+    <div class="container">
+        <a class="download-btn" href="dist/customSelect-master.zip">DOWNLOAD</a>
+    </div>
+</div>
+
+<div class="fork">
+    <div class="container">
+        <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=jekad&amp;repo=customSelect&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+        <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=jekad&amp;repo=customSelect&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="92px" height="20px"></iframe>
+    </div>
+</div>
+
+<div class="container">
+    <div class="demos">
+        <h2>Demos:</h2>
+        <h3>1. Just select</h3>
+        <div class="demo">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <label for="my-select">Choose</label>
+                    <select name="my-select" id="my-select">
+                        <option value="usa">USA</option>
+                        <option value="russia">Russia</option>
+                        <option value="england">England</option>
+                        <option value="italy">Italy</option>
+                    </select>
+                    <div class="select-val">Value: <span></span></div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                        <pre class="prettyprint">
+
+    &ltselect name="my-select" id="my-select"&gt
+        &ltoption value="usa">USA&lt/option&gt
+        &ltoption value="russia">Russia&lt/option&gt
+        &ltoption value="england">England&lt/option&gt
+        &ltoption value="italy">Italy&lt/option&gt
+    &lt/select>
+
+    $('#my-select').customSelect();
+                        </pre>
+                </div>
+            </div>
+        </div>
+
+        <h3>2. Select with images</h3>
+        <div class="demo">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <label for="my-select-img">Choose</label>
+                    <select name="my-select-img" id="my-select-img">
+                        <option data-icon="images/usa.png" value="usa">USA</option>
+                        <option data-icon="images/ru.png" value="russia">Russia</option>
+                        <option data-icon="images/en.png" value="england">England</option>
+                        <option data-icon="images/italy.png" value="italy">Italy</option>
+                    </select>
+                    <div class="select-val">Value: <span></span></div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                        <pre class="prettyprint">
+
+    &ltselect name="my-select" id="my-select"&gt
+        &ltoption data-icon="images/usa.png" value="usa">USA&lt/option&gt
+        &ltoption data-icon="images/ru.png" value="russia">Russia&lt/option&gt
+        &ltoption data-icon="images/en.png" value="england">England&lt/option&gt
+        &ltoption data-icon="images/italy.png" value="italy">Italy&lt/option&gt
+    &lt/select>
+
+    $('#my-select').customSelect( {defaultValue: 'Choose country'} );
+                        </pre>
+                </div>
+            </div>
+        </div>
+
+        <h3>3. Select with images and fixed drop down height</h3>
+        <div class="demo">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <label for="my-select-scroll">Choose country</label>
+                    <select name="my-select-scroll" id="my-select-scroll">
+                        <option data-icon="images/usa.png" value="usa">USA</option>
+                        <option data-icon="images/ru.png" value="russia">Russia</option>
+                        <option data-icon="images/en.png" value="england">England</option>
+                        <option data-icon="images/italy.png" value="italy">Italy</option>
+                    </select>
+                    <div class="select-val">Value: <span></span></div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                        <pre class="prettyprint">
+
+    &ltselect name="my-select" id="my-select"&gt
+        &ltoption data-icon="images/usa.png" value="usa">USA&lt/option&gt
+        &ltoption data-icon="images/ru.png" value="russia">Russia&lt/option&gt
+        &ltoption data-icon="images/en.png" value="england">England&lt/option&gt
+        &ltoption data-icon="images/italy.png" value="italy">Italy&lt/option&gt
+    &lt/select>
+
+    $('#my-select').customSelect({height: '129px'});
+                        </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parameters">
+        <h2>Parameters:</h2>
+        <p><span class="bold">defaultValue</span> - Set default text to display when no option is selected.</p>
+        <p><span class="bold">height</span> - Height in px for the drop down options.</p>
+    </div>
+
+    <div class="methods">
+        <h2>Methods:</h2>
+        <p><span class="bold">update</span> - Update custom select. Use when optons your basic select is changed. You can set height, if its need.(like this $('#my-select').customSelect({'update', '129px'}); )</p>
+    </div>
+
+    <div class="footer">
+        <p>Copyright © 2015</p>
+    </div>
+</div>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/customSelect.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $('#my-select').customSelect();
+    $('#my-select-img').customSelect({defaultValue: 'Choose country'});
+    $('#my-select-scroll').customSelect({height: '129px'});
+
+    $(document).ready(function () {
+        $('.demo').find('select').on('change', function () {
+            $(this).parent().find('.select-val').find('span').html( $(this).val() );
+        })
+    });
+</script>
+</body>
+</html>
