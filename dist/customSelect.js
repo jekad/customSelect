@@ -9,6 +9,7 @@
                 self = $(this),
                 uniqueClass = this.attr('id'),
                 customSelect,
+                customSelectHeight,
                 defaultValueOption,
                 dropdown;
 
@@ -51,6 +52,10 @@
 
             customSelect.insertAfter(this);
 
+            //positioner drop down
+            customSelectHeight = customSelect.outerHeight();
+            dropdown.css('top', customSelectHeight);
+
             // open/close select
             customSelect.on('click', function () {
                 if ( $(this).hasClass('update') ) return false;
@@ -60,13 +65,13 @@
 
             // close, if click not on the select
             $(document).on('click', function (event) {
-                if ( !($(event.target).hasClass('select-custom'))  && $(event.target).attr('class') != 'default' ) {
+                if ( !($(event.target).hasClass('select-custom'))  && $(event.target).attr('class') != 'default' && !($(event.target).hasClass('cs-arrow')) ) {
                     dropdown.fadeOut('fast');
                 }
             });
 
             // change value and text, if click on the select item
-            customSelect.find('span').not('.default').on('click', function () {
+            customSelect.find('span').not('.default').not('.cs-arrow').on('click', function () {
                 self.val( $(this).attr('data-val') );
                 defaultValueOption.html( $(this).html() );
                 self.trigger('change');
