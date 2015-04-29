@@ -37,4 +37,6 @@ if you need set dropdown height don't forget add parameter
 
     $('#default-select').customSelect( 'update', '100px');
 
+**EXAMPLES**
 
+http://jekad.github.io/customSelect/
