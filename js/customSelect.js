@@ -56,6 +56,11 @@
             customSelectHeight = customSelect.outerHeight();
             dropdown.css('top', customSelectHeight);
 
+            //disable selection
+            customSelect.on('mousedown', function () {
+                return false;
+            });
+
             // open/close select
             customSelect.on('click', function () {
                 if ( $(this).hasClass('update') ) return false;
@@ -65,7 +70,7 @@
 
             // close, if click not on the select
             $(document).on('click', function (event) {
-                if ( !($(event.target).hasClass('select-custom'))  && $(event.target).attr('class') != 'default' && !($(event.target).hasClass('cs-arrow')) ) {
+                if ( !($(event.target).hasClass('select-custom'))  && $(event.target).attr('class') != 'default' && !($(event.target).hasClass('cs-arrow')) && !($(event.target).hasClass('cs-icon')) ) {
                     dropdown.fadeOut('fast');
                 }
             });
